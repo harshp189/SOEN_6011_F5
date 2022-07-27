@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,7 +18,22 @@ public class Main {
                 b = sc.nextDouble();
                 System.out.println("Enter the value of x: ");
                 x = sc.nextDouble();
-                
+
+                if(a>0.0 && b!=1.0){
+                    improperInput = false;
+                }else {
+                    improperInput = true;
+                    System.out.println("Please enter valid inputs for a and b, inputs must be, a > 0 and b > 1 ");
+                    continue;
+                }
+
+                if(!improperInput){
+                    improperInput = true; // to continue asking inputs from the user unless e is entered.
+                    double exponentialResult =  Exponential.computeExponential(b,x);
+                    double result = a * exponentialResult;
+                    System.out.println("Exponential function value is:" + result);
+
+                }
 
             }catch(InputMismatchException e){
                 System.out.println("Entered input is not a double value.");
