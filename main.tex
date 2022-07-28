@@ -172,7 +172,8 @@ implementing the function $y = ab^x $. The pseudocode for each of the algorithm 
 
 In this algorithm, the iterative approach is used for calculation of the given function, $ab^x$, Initially a temporary  variable called $temp$ is initialized to 1 and to calculate $b^x$, While loop is used for all the values of $x$ (exponent) and in each iteration, $temp$ is multiplied by $b$ (base) and the value of $x$ is decremented by 1. The loop continue until the exponent value $x$ reaches to 0. At last, $a$ is multiplied with the $temp$ value $(a*b^x)$ and the output is obtained in the result and it is returned.
 
-\newpage
+\vspace{40mm}
+
 
 \begin{algorithm}[hbt!]
 \caption{Recursive-Exponent(a,b,x)}\label{alg:two}
@@ -186,6 +187,7 @@ In this algorithm, the iterative approach is used for calculation of the given f
 \end{algorithmic}
 \end{algorithm}
 
+\newpage
 
 
 \begin{algorithm}[hbt!]
@@ -194,24 +196,105 @@ In this algorithm, the iterative approach is used for calculation of the given f
 \hspace*{\algorithmicindent} \textbf{Input : }double number $b,x$. \\
 \hspace*{\algorithmicindent} \textbf{Output : }value of $b^x$ will be returned.
 \begin{algorithmic}[1]
-\STATE $holder \gets recursive\_power(b,x/2)$
-\IF{$x$ = 0}
-  \STATE return $1$
+\IF{$x \neq (Integer) x $}
+  \STATE return $ fraction\_power(b,x) $
+\ENDIF
+\STATE $helper \gets recursive\_power(b,x/2)$
+\IF{$x < $ 0}
+  \STATE $ b  \gets $ 1.0/$ b $
+  \STATE $ x  \gets  - x $
+  \IF{$x$ mod 2 = 0}
+  \STATE return $helper \times helper$
+  \ELSE
+  \STATE $x \gets x - 1$
+  \STATE return $helper \times helper \times b$
+\ENDIF
+\ELSIF{$x$ = 0}
+  \STATE return $1.0$
 \ELSIF{$x$ = 1}
   \STATE return $b$
 \ELSIF{$x$ mod 2 = 0}
-  \STATE return $holder \times holder$
-\ELSIF{$x > $ 0}
-  \STATE return $holder \times holder \times b$
+  \STATE return $helper \times helper$
 \ELSE
-  \STATE return $holder \times holder {/} b$
+  \STATE $x \gets x - 1$
+  \STATE return $helper \times helper \times b$
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
 
-In this algorithm, the recursive approach using divide and conquer strategy is used for the calculation of the given function $ab^x$. $recursive\_power(b,x)$ algorithm is used for calculating the value of $b^x$, the recursive call to the function with value base $b$ and $x = x/2$ i.e $recursive\_power(b,x/2)$ is stored in holder, so that it needs to be computed just once and can be used later on. In the base case, if the value of $x$ is 0, value $1$ is returned, otherwise, if $x=1$, value $b$ is returned, if the exponent is divisible by $2$, the algorithm recurses on $(holder * holder)$ and for odd value of exponent, it recurses on $(holder * holder * b)$, for negative value of exponent, the algorithm recurses on $(holder * holder / b)$. At last, $a$ is multiplied with the returned value from $recursive\_power(b,x)$ and the output is obtained in the $result$, and it is returned.
+In this algorithm, the recursive approach using divide and conquer strategy is used for the calculation of the given function $ab^x$. $recursive\_power(b,x)$ algorithm is used for calculating the value of $b^x$, the recursive call to the function with value base $b$ and $x = x/2$ i.e $recursive\_power(b,x/2)$ is stored in helper, so that it needs to be computed just once and can be used later on. If the value of exponent $x$ is fractional, it is checked and $fraction\_power(b,x)$ will compute all the power values of such exponents. For negative value of exponent, value of base $b$is reciprocated and that of exponent $x$ is negated and on the basis of the parity the algorithm performs the computation. In the base case, if the value of $x$ is 0, value $1$ is returned, otherwise, if $x=1$, value $b$ is returned, if the exponent is divisible by $2$, the algorithm recurses on $(helper * helper)$ and for odd value of exponent, the value of exponent is decremented by $1$ and then it recurses on $(helper * helper * b)$,  At last, $a$ is multiplied with the returned value from $recursive\_power(b,x)$ and the output is obtained in the $result$, and it is returned.
 
 \newpage
+\begin{algorithm}[hbt!]
+\caption{fractional\_power(b,x)}\label{alg:two}
+
+\hspace*{\algorithmicindent} \textbf{Input : }double number $b,x$. \\
+\hspace*{\algorithmicindent} \textbf{Output : }value of $b^x$ will be returned.
+\begin{algorithmic}[1]
+\STATE $exponentValue \gets 0$
+\STATE $iterations \gets 150$
+\STATE $logValue \gets logarithm\_calculator(b)$
+\WHILE{$iterations >= 0$}
+  \STATE $powerValue \gets recursive\_power((x * logValue) , iterations) $
+  \STATE $factorialValue \gets factorial\_calculator(iterations)$ 
+  \STATE $exponentValue \gets exponentValue + (powerValue / factorialValue)$
+  \STATE $iterations \gets iterations - 1$
+\ENDWHILE
+
+\STATE $reciprocalExponentValue \gets 1/exponentValue $
+\IF{$x > $ 0}
+  \STATE return $exponentValue$
+\ELSE
+ \STATE return $reciprocalExponentValue$
+\ENDIF
+
+\end{algorithmic}
+\end{algorithm}
+\vspace*{-.4cm}
+\begin{algorithm}[hbt!]
+\caption{logarithm\_calculator(n)}\label{alg:two}
+
+\hspace*{\algorithmicindent} \textbf{Input : }double number $n$. \\
+\hspace*{\algorithmicindent} \textbf{Output : }natural logarithmic value of n $ln(n)$ will be returned.
+\begin{algorithmic}[1]
+
+\STATE $iterations \gets 100$
+\STATE $logValue \gets 0 $
+\IF{$n < $ 0}
+  \STATE $n \gets -n$
+\ENDIF
+\STATE $baseValue \gets (n - 1) / (n + 1) $
+
+\WHILE{$iterations > 0$}
+  \IF{$iterations$ mod $2 \neq 0$}
+  \STATE $logValue \gets logValue + recursive\_power(baseValue , iterations) / iterations $
+  \ENDIF
+  \STATE $iterations \gets iterations - 1$
+\ENDWHILE
+\STATE return $logValue * 2$
+
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[hbt!]
+\caption{factorial\_calculator(n)}\label{alg:two}
+
+\hspace*{\algorithmicindent} \textbf{Input : }double number $n$. \\
+\hspace*{\algorithmicindent} \textbf{Output : }factorial value of $n$ will be returned.
+\begin{algorithmic}[1]
+
+\IF{$n = $ 0}
+  \STATE return $1$
+\ENDIF
+\STATE return $ (n * factorial\_calculator(n-1)) $
+
+\end{algorithmic}
+\end{algorithm}
+
+
+
+\newpage
+Algorithm $fractional\_power(b,x) $ helps in finding the power of any fractional exponent, the given exponent and base are converted as, $b^x = (e^{ln(b)})^x = e^{xln(b)} $, where the natural logarithm value for b is computed using the $logarithm\_calculator(n) $ algorithmFinally, the computation of $e^{xln(b)} $ is performed by calculating numerator(powerValue) by using $recursive\_power$ , passing $x * value of ln(x) $ as base and $iteration \hspace{1mm} number$ as exponent and the denominator is the factorial value of the iteration number obtained using the $factorial\_calulcator(n)$ algorithm, numerator and denominator are divided and their result is stored in the $exponentValue$ which is returned after completion of all the given number of iterations.
 
 \subsection{Advantages and Disadvantages}
 
