@@ -3,6 +3,7 @@ package com.exponential;
 public class Exponential {
     public static double e = 2.7182818284590;
 
+
     public static double computeExponential(double base, double exponent) {
 
         if(exponent != (int) exponent){
@@ -30,15 +31,33 @@ public class Exponential {
         }
     }
 
+
     public static double computeLogarithm(double number){
 
-        return 0.0;
+        int numberOfIterations = 100;
+        if(number<0)
+            number=-number;
+        double logValue = 0;
+        double baseValue = (number - 1)/(number + 1);
+
+        while(numberOfIterations > 0){
+
+            if(numberOfIterations % 2 != 0){
+                logValue += computeExponential(baseValue,numberOfIterations) / numberOfIterations ;
+            }
+            numberOfIterations--;
+        }
+        return logValue * 2;
     }
+
 
     public static double computeFactorial(double number){
-
-        return 0.0;
+        if(number == 0){
+            return 1;
+        }
+        return (number * computeFactorial(number - 1));
     }
+
 
     public static double fractionExponential(double base, double exponent){
 
