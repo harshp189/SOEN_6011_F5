@@ -6,7 +6,13 @@ import java.util.Scanner;
 
 public class Main {
 
-
+    /**
+     * This main method contains implementation of basic command line interface,
+     * for asking input from the userThe command line asks for the input values
+     * a, b(base) and x(exponent) from the user.
+     * @param args
+     *
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         char exitCharacter;
