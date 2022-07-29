@@ -1,4 +1,6 @@
-import java.io.IOException;
+package com.exponential;
+
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -28,7 +30,7 @@ public class Main {
                 }
 
                 if(!improperInput){
-                    improperInput = true; // to continue asking inputs from the user unless e is entered.
+                    improperInput = true;
                     double exponentialResult =  Exponential.computeExponential(b,x);
                     double result = a * exponentialResult;
                     System.out.println("Exponential function value is:" + result);
