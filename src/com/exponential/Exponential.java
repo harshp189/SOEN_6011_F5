@@ -1,7 +1,11 @@
 package com.exponential;
-
-public class Exponential {
-    public static double e = 2.7182818284590;
+public final class Exponential {
+    private Exponential() {
+    }
+    /**
+     * variable e is the value of euler's number.
+     */
+    public static final double EULERVALUE = 2.7182818284590;
 
     /**
      * This method computes the exponential value of the passed
@@ -13,29 +17,31 @@ public class Exponential {
      * @return power value (b raised to x).
      */
     public static double computeExponential(double base, double exponent) {
-
-        if(exponent != (int) exponent){
-            return fractionExponential(base,exponent);
+        if (exponent != (int) exponent) {
+            return fractionExponential(base, exponent);
         }
-        if(exponent<0){
-            base = 1/base;
+        if (exponent < 0) {
+            base = 1 / base;
             exponent = -exponent;
-            if(exponent % 2 == 0.0){
-                return computeExponential(base,exponent/2) * computeExponential(base,exponent/2);
+            if (exponent % 2 == 0.0) {
+                return computeExponential(base, exponent / 2)
+                        * computeExponential(base, exponent / 2);
+            } else {
+                exponent = exponent - 1;
+                return base * computeExponential(base, exponent / 2)
+                        * computeExponential(base, exponent / 2);
             }
-            else{
-                exponent = exponent -1;
-                return base * computeExponential(base,exponent/2)*computeExponential(base,exponent/2);
-            }
-        }else if(exponent==0.0){
+        } else if (exponent == 0.0) {
             return 1.0;
-        }else if(exponent==1.0){
+        } else if (exponent == 1.0) {
             return base;
-        }else if(exponent % 2==0.0){
-            return computeExponential(base,exponent/2)*computeExponential(base,exponent/2);
-        }else{
+        } else if (exponent % 2 == 0.0) {
+            return computeExponential(base, exponent / 2)
+                    * computeExponential(base, exponent / 2);
+        } else {
             exponent = exponent - 1;
-            return base * computeExponential(base,exponent/2)*computeExponential(base,exponent/2);
+            return base * computeExponential(base, exponent / 2)
+                    * computeExponential(base, exponent / 2);
         }
     }
 
@@ -45,18 +51,20 @@ public class Exponential {
      * @param number is the number whose ln() value is to be calculated.
      * @return the natural logarithmic value of number.
      */
-    public static double computeLogarithm(double number){
-
-        int numberOfIterations = 100;
-        if(number<0)
-            number=-number;
+    public static double computeLogarithm(double number) {
+        final int iterations = 100;
+        int numberOfIterations = iterations;
+        if (number < 0) {
+            number = -number;
+        }
         double logValue = 0;
-        double baseValue = (number - 1)/(number + 1);
+        double baseValue = (number - 1) / (number + 1);
 
-        while(numberOfIterations > 0){
+        while (numberOfIterations > 0) {
 
-            if(numberOfIterations % 2 != 0){
-                logValue += computeExponential(baseValue,numberOfIterations) / numberOfIterations ;
+            if (numberOfIterations % 2 != 0) {
+                logValue += computeExponential(baseValue, numberOfIterations)
+                        / numberOfIterations;
             }
             numberOfIterations--;
         }
@@ -68,8 +76,8 @@ public class Exponential {
      * @param number is the number whose factorial is to be calculated.
      * @return the factorial of the number.
      */
-    public static double computeFactorial(double number){
-        if(number == 0){
+    public static double computeFactorial(double number) {
+        if (number == 0) {
             return 1;
         }
         return (number * computeFactorial(number - 1));
@@ -84,20 +92,21 @@ public class Exponential {
      *                 exponential function.
      * @return exponent value (b raised to x).
      */
-    public static double fractionExponential(double base, double exponent){
 
+    public static double fractionExponential(double base, double exponent) {
         double exponentValue = 0;
-        int numberOfIterations = 150;
+        final int iterations = 20;
+        int numberOfIterations = iterations;
         double logValueB = computeLogarithm(base);
         double eValueX = (exponent * logValueB);
         double eValueR = eValueX - (int) eValueX;
-        while(numberOfIterations >= 0){
+        while (numberOfIterations >= 0) {
             double factorialValue = computeFactorial(numberOfIterations);
-            double powerValue = computeExponential(eValueR , numberOfIterations); //powerValue
+            double powerValue = computeExponential(eValueR, numberOfIterations);
             exponentValue = exponentValue + (powerValue / factorialValue);
             numberOfIterations--;
         }
-        double eValueN = computeExponential(e ,(int)eValueX);
+        double eValueN = computeExponential(EULERVALUE, (int) eValueX);
         double finalResult = exponentValue * eValueN;
         return finalResult;
     }
