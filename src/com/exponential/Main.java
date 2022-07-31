@@ -12,7 +12,6 @@ public class Main {
      *
      * @param args
      */
-
     public static void main(final String[] args) {
         Scanner sc = new Scanner(System.in);
         char exitCharacter;
@@ -20,33 +19,31 @@ public class Main {
         double b;
         double x;
         boolean improperInput = true;
-        while (true) {
-            if (improperInput) {
-                try {
-                    System.out.println("*** Exponential Function ***");
-                    System.out.print("Enter the value of a: \n");
-                    a = sc.nextDouble();
-                    System.out.println("Enter the value of b: ");
-                    b = sc.nextDouble();
-                    System.out.println("Enter the value of x: ");
-                    x = sc.nextDouble();
-                    boolean incorrectInput = input(a, b, x);
-                    if (incorrectInput) {
-                        continue;
-                    }
-                } catch (InputMismatchException e) {
-                    System.out.println("Entered input is not a double value.");
-                } catch (Exception e) {
-                    System.out.println("Some Exception occurred.");
+        while (improperInput) {
+            try {
+                System.out.println("*** Exponential Function ***");
+                System.out.print("Enter the value of a: \n");
+                a = sc.nextDouble();
+                System.out.println("Enter the value of b: ");
+                b = sc.nextDouble();
+                System.out.println("Enter the value of x: ");
+                x = sc.nextDouble();
+                boolean incorrectInput = input(a, b, x);
+                if (incorrectInput) {
+                    continue;
                 }
-
-                System.out.print("\nType e/E to exit or "
-                        + "any other key to continue : \n");
-                exitCharacter = sc.next().charAt(0);
-                if (exitCharacter == 'e' || exitCharacter == 'E') {
-                    System.out.println("Thank you!!");
-                    break;
-                }
+            } catch (InputMismatchException e) {
+                System.out.println("Entered input is not a numeric value. Do you want to continue?");
+            } catch (Exception e) {
+                System.out.println("Some Exception occurred.");
+            }
+            sc.nextLine();
+            System.out.print("\nType e/E to exit or "
+                    + "any other key to continue : \n");
+            exitCharacter = sc.next().charAt(0);
+            if (exitCharacter == 'e' || exitCharacter == 'E') {
+                System.out.println("Thank you!!");
+                improperInput = false;
             }
 
         }
@@ -55,7 +52,6 @@ public class Main {
 
     /**
      * This method validates the input values entered by the user.
-     *
      * @param a is the value of a
      * @param b is the value of base
      * @param x is the value of exponent
