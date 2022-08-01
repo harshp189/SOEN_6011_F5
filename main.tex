@@ -337,5 +337,42 @@ Disadvantages:
 \subsection*{Decision}
 Algorithm 2 (recursive approach) would be a better option for the implementation of the function $ab^x$ as it has lower time complexity and the computation of the function must be performed quickly, so it is preferable to use the recursive algorithm rather than the iterative algorithm.
 
+\section{Problem 4 }
+\subsection{Debugger}
+\subsubsection{Description}
+Debugging provides the facility for identifying and eliminating bugs, errors present in the program. This process can help in tracing the reasons behind the improper functional behaviour of any program. For debugging, I have used the IntelliJ debugger tool for java language and depending on the various installed plugins, it provides support for debugging code in different languages as well. IntelliJ debugger allows the facility to run the program step by step and keep a track of the values of the associated variables \cite{IntelliJ Debugger}.
+
+\subsubsection{Advantages : }
+\begin{enumerate}
+    \item Breakpoints are special kind of markers which when encountered the debugger temporarily halts the program execution (suspended program state) and it makes easier to analyse and debug those special lines.
+    \item It allows to trace the values of the variable throughout the program, such trace would be helpful to identify the points where the incorrect values are assigned to the variables, also it provides information about the status of the threads.
+    \item It enables execution of any arbitrary piece of code in the middle of the program's execution as well as throw exceptions to test the functional behaviour of the program under different circumstances. Also allows running multiple debugging sessions at the same time.
+    \item IntelliJ debugger provides a feature called stepping tool which provides control over the step-by-step execution of the program and helps in deducing the source of the error.
+    \item IntelliJ debugger supports the feature to modify and adjust the parts of code without requiring to termination of the ongoing debugging process, it eliminates the need to modify the values of the variable and run the debugger again from start.
+\end{enumerate}
+
+\subsubsection{Disadvantages : }
+\begin{enumerate}
+    \item With the help of debugger, the location of the problem can be identified but the logical error associated with it cannot be known.
+    \item Debugger does not provide insights on design issues as well as structure of the code and there is a learning curve associated with it.
+    \item Debugger faces several problems while dealing with multithreading programs. 
+\end{enumerate}
+
+\newpage
+
+\begin{figure}[h]
+  \includegraphics[width=15cm,height=9cm]{debugger-1.png}
+  \caption{Debugging computation of exponential function}
+  \label{fig:Debugging computation of exponential function}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \includegraphics[width=15cm,height=9cm]{debugger-2.png}
+  \caption{Debugging computation of fractional exponent value}
+  \label{Debugging computation of fractional exponent value}
+\end{figure}
+
+\newpage
 
 \end{document}
