@@ -336,11 +336,12 @@ Disadvantages:
 
 \subsection*{Decision}
 Algorithm 2 (recursive approach) would be a better option for the implementation of the function $ab^x$ as it has lower time complexity and the computation of the function must be performed quickly, so it is preferable to use the recursive algorithm rather than the iterative algorithm.
+\newpage
 
 \section{Problem 4 }
 \subsection{Debugger}
 \subsubsection{Description}
-Debugging provides the facility for identifying and eliminating bugs, errors present in the program. This process can help in tracing the reasons behind the improper functional behaviour of any program. For debugging, I have used the IntelliJ debugger tool for java language and depending on the various installed plugins, it provides support for debugging code in different languages as well. IntelliJ debugger allows the facility to run the program step by step and keep a track of the values of the associated variables \cite{IntelliJ Debugger}.
+Debugging provides the facility for identifying and eliminating bugs, errors present in the program. This process can help in tracing the reasons behind the improper functional behaviour of any program. For debugging, I have used the IntelliJ debugger tool for java language and depending on the various installed plugins, it provides support for debugging code in different languages as well. IntelliJ debugger allows the facility to run the program step by step and keep a track of the values of the associated variables.
 
 \subsubsection{Advantages : }
 \begin{enumerate}
@@ -372,6 +373,21 @@ Debugging provides the facility for identifying and eliminating bugs, errors pre
   \caption{Debugging computation of fractional exponent value}
   \label{Debugging computation of fractional exponent value}
 \end{figure}
+
+\newpage
+
+\newpage
+
+\subsection{Quality Attributes}
+This section highlights and describes several efforts made to achieve the desired quality attributes related to the java program .
+\begin{enumerate}
+    \item \textbf{Efficient} – The program uses recursive algorithm to compute the exponential value and it provides time complexity of $O(logn)$ and it is the same for space complexity due to recursive stack space. It is more efficient and better choice in comparison to other approaches. As a result, the program runs quickly, and the function value is computed within required time window.
+    \item \textbf{Maintainable} – The program is partitioned into various methods each responsible for certain kind of computation, I have divided the user interface, error handling part $(Main.java)$ from the core logic part $(Exponential.java)$ related to the calculation of exponential function value. It allows easy modification of features/functionalities as well as adding new ones. It makes the code maintainable.
+    \item \textbf{Correctness} – I have designed several test cases to check the program against all the possible values of the base and exponent including invalid inputs, fractional exponent, negative exponents, every test case successfully runs and hence the developed program provides correct results and agrees to the desired specifications.
+    \item \textbf{Robust} – Input values are validated as they are entered by the user and all the invalid inputs are rejected. On entering such inputs, the program displays corresponding error message and asks for new valid input values from the user. In this way error handling is performed to avoid any kind of failure. 
+    \item \textbf{Usable} – The program provides text-based user interface to the user for entering the values and displays the computed result. The error messages are meaningful and can be easily understood. It provides functionality for user to continue the computation for other values or exit the system. In this way, the program is made user-friendly.
+    \item \textbf{Portable} - The program is developed in java language, so it can be executed on other platforms as well as systems without requiring any modifications. 
+\end{enumerate}
 
 \newpage
 
