@@ -1,23 +1,44 @@
 \documentclass[12pt, a4paper]{article}
 
+\usepackage[colorlinks=true,linkcolor=black,anchorcolor=blue,citecolor=black,urlcolor=blue]{hyperref}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage[margin=3cm]{geometry}
 \usepackage{algcompatible}
-
+\usepackage[utf8]{inputenc}
 
 
 \begin{document}
+\begin{titlepage}
+	\centering
+    \vspace*{0.5 cm}
+\begin{center}    \textsc{\Large Concordia University}\\[2.0 cm]	\end{center}
+	\textsc{\Large  SOEN 6011 - Software Engineering Process }\\[0.5 cm]
+	\begin{center} \textsc{\Large Summer 2022} \end{center}
 
+	\vspace{15mm}
+	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	{ \huge \textbf {ETERNITY}}\\[0.2 cm]
+	{ \large \textbf{FUNCTION (F5) : $ab^x$}}
+	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+\vspace{70mm}	
+\begin{center}   
+                 {\large \textbf{Harshkumar Nileshkumar Patel}  }\\[0.2 cm]
+                 {\large Student ID : 40165709 }\\[0.2 cm]
+                 \vspace{10mm}
+                 {\large Github Link :-  }
+\end{center}
+	
+\end{titlepage}
 \tableofcontents
 \newpage
 
 \section{Problem 1 : Introduction}
 \subsection{Description}
 
-F5 : $ab^x$ is an exponential function, where a is a constant value, $a \ne 0$ and it also represents starting (initial) value , b is called base and is a positive real number and $b \ne 1$, x is called the exponent (power), it is independent variable . In this function, b is a constant value, whereas x is variable.
+F5 : $ab^x$ is an exponential function, where a is a constant value, $a \ne 0$ and it also represents starting (initial) value , $b$ is called base and is a positive real number, $b > 0$, $x$ is called the exponent (power). In this function, $b$ is a constant and $x$ is  independent variable \cite{Exponential Growth and Decay}.
 
 \subsection{Domain}
 
@@ -27,7 +48,7 @@ The domain for exponential function is the set of real numbers.
 \subsection{Co-Domain}
 
 Co-Domain is the set of all possible function output values.
-\newline Suppose $y = f(x) = ab^x $, then -$\infty < y <\infty$ , so the range will be $[-\infty,\infty]$.
+\newline For the given function , suppose $y = f(x) = ab^x $, then -$\infty < y <\infty$ , so the range will be $(-\infty,\infty)$. So the range of the function is $y \in R $, where $x \in R$ , $ b > 0 $.
 
 \subsection{Characteristics}
 \begin{itemize}
@@ -36,28 +57,54 @@ Co-Domain is the set of all possible function output values.
     \item Exponential function have horizontal asymptote (i.e function approaches to a imaginary horizontal line but never crosses) at $ Y=0 $ (i.e $ X $ – axis).
     \item They are continuous function.
     \item There is no symmetry in exponential function, so they are neither odd nor even function.
-    \item Exponential function is not injective but is surjective. 
+    \item Exponential function is not injective but is surjective \cite{Injectivity and Surjectivity of Exponential Function}.
 \end{itemize}
 
 \newpage
 
 \begin{figure}[h]
   \includegraphics[width=\linewidth]{exponential-function.jpg}
-  \caption{Exponential Function Graph (Growth And Decay).}
+  \caption{Exponential Function Graph (Growth And Decay) \cite{Exponential Function Graph}.}
   \label{fig:exponential function graph (growth and decay)}
 \end{figure}
 
 \subsection{Context of Use Model}
 \begin{figure}[h!]
-  \includegraphics[width=0.5\linewidth]{frog.jpg}
-  \caption{Exponential Function Graph (Growth And Decay).}
-  \label{fig:exponential function graph (growth and decay)}
+  \includegraphics[width=\linewidth]{ContextOfUse.png}
+  \caption{Context of Use model}
+  \label{fig:Context of Use model}
 \end{figure}
 
 
 \newpage
 
 \section{Problem 2 : Requirements}
+\subsection{Assumptions}
+\begin{enumerate}
+    \item{} Assumption 1
+     \begin{itemize}
+        \item \textbf{ID} : A1
+        \item \textbf{Description} : The user should provide input values for all $``a``,``b`` and ``x``$. As  no default values are assumed for the calculation of the function.
+     \end{itemize}
+     
+     \item{} Assumption 2
+     \begin{itemize}
+        \item \textbf{ID} : A2
+        \item \textbf{Description} : Inputs for the function should be real number and the output of the function is also a real number.
+     \end{itemize}
+    
+     \item{} Assumption 3
+     \begin{itemize}
+        \item \textbf{ID} : A3
+        \item \textbf{Description} : For large input values which are out of the range, the results are undefined.
+     \end{itemize}
+    
+\end{enumerate}
+
+
+
+\subsection{Requirements}
+The Functional and Non-Functional Requirements are expressed using guidelines from the ISO/IEC/IEEE 29148:2018 standard \cite{Requirements Engineering}.
 \begin{enumerate}
     \item{} Requirement 1
         \begin{itemize}
@@ -66,7 +113,7 @@ Co-Domain is the set of all possible function output values.
         \item \textbf{Type} : Functional Requirement
         \item \textbf{Priority} : High
         \item \textbf{Difficulty} : Easy
-        \item \textbf{Description} : In the exponential function $ ab^x $, the input value a should be greater than 0 i.e., $ a > 0 $ (or else it will result in output of the function to be 0 for every input), also input value of base b must be greater than 1 i.e., $ b > 1 $ (or else if $b = 1 $, it will result in output of the function to be ‘a’ for every input of x).
+        \item \textbf{Description} : In the exponential function $ ab^x $, the input value a should not be 0 i.e., $ a \neq 0 $ (or else it will result in output of the function to be 0 for every input), also input value of base b must be greater than 1 i.e., $ b > 1 $ (or else if $b = 1 $, it will result in output of the function to be ‘a’ for every input of x).
         \end{itemize}
     
     \item{} Requirement 2
@@ -76,8 +123,9 @@ Co-Domain is the set of all possible function output values.
         \item \textbf{Type} : Functional Requirement
         \item \textbf{Priority} : High
         \item \textbf{Difficulty} : Easy
-        \item \textbf{Description} : In the exponential function $ab^x$, the input value of base b must not be negative as it will result will be complex numbers so $b > 0$.
+        \item \textbf{Description} : In the exponential function $ab^x$, the input value of base b must not be negative as it will result in complex numbers so $b > 0$. Also, the input value of $x$ must be any real number. i.e $x \in R$.
         \end{itemize}
+    
     
     \item{} Requirement 3
         \begin{itemize}
@@ -85,30 +133,29 @@ Co-Domain is the set of all possible function output values.
         \item \textbf{Version} : 1.0
         \item \textbf{Type} : Functional Requirement
         \item \textbf{Priority} : High
-        \item \textbf{Difficulty} : Easy
-        \item \textbf{Description} : In the exponential function $ab^x$, the input value of x must be any real number. i.e $x \in R$.
+        \item \textbf{Difficulty} : Medium
+        \item \textbf{Description} : The system must take input values of a, b and x from the users and return the output of $ab^x$ function. For example, if $ a = 2, b = 3 , x = 2,$ the output should be $ 18 $.
         \end{itemize}
+        
     
-    \newpage
-    
-    \item{} Requirement 4
+     \item{} Requirement 4
         \begin{itemize}
         \item \textbf{ID} : REQ4
         \item \textbf{Version} : 1.0
         \item \textbf{Type} : Functional Requirement
         \item \textbf{Priority} : High
         \item \textbf{Difficulty} : Medium
-        \item \textbf{Description} : The system must take input values of a, b and x from the users and return the output of $ab^x$ function. For example, if $ a = 2, b = 3 , x = 2,$ the output should be $ 18 $.
+        \item \textbf{Description} : The system must be able to compute the value of the function $ab^x$ when the input value of exponent $x$ is fractional or negative and must handle all the cases.
         \end{itemize}
-    
-    \item{} Requirement 5
+        
+       \item{} Requirement 5
         \begin{itemize}
         \item \textbf{ID} : REQ5
         \item \textbf{Version} : 1.0
         \item \textbf{Type} : Functional Requirement
         \item \textbf{Priority} : High
         \item \textbf{Difficulty} : Easy
-        \item \textbf{Description} : If any of the input values a, b or x are not provided by the user, the system should not accept that input and ask user to provide the missing values. 
+        \item \textbf{Description} : If the input values are not of numeric type (real number), the system must not accept it and handle the error and ask for numeric values as input.
         \end{itemize}
     
     \item{} Requirement 6
@@ -118,21 +165,22 @@ Co-Domain is the set of all possible function output values.
         \item \textbf{Type} : Functional Requirement
         \item \textbf{Priority} : High
         \item \textbf{Difficulty} : Easy
-        \item \textbf{Description} : If the input values are not of integer type, the system must not accept it and handle the error and ask for integer values as input.
+        \item \textbf{Description} : If any of the input values a, b or x are not provided by the user, the system should not accept that input and ask user to provide the missing values. 
         \end{itemize}
-        
-    \newpage
     
+ 
+    
+     
     \item{} Requirement 7
         \begin{itemize}
         \item \textbf{ID} : REQ7
         \item \textbf{Version} : 1.0
-        \item \textbf{Type} : Functional Requirement
-        \item \textbf{Priority} : Medium
-        \item \textbf{Difficulty} : Easy
-        \item \textbf{Description} : If the user enters any large input value which the system cannot handle, it should throw an exception and handle it accordingly.
+        \item \textbf{Type} : Non-Functional Requirement
+        \item \textbf{Priority} : High
+        \item \textbf{Difficulty} : Medium
+        \item \textbf{Description} : The computation of the function must be performed within some desired time to provide better performance.
         \end{itemize}
-     
+    
     \item{} Requirement 8
         \begin{itemize}
         \item \textbf{ID} : REQ8
@@ -140,8 +188,17 @@ Co-Domain is the set of all possible function output values.
         \item \textbf{Type} : Non-Functional Requirement
         \item \textbf{Priority} : High
         \item \textbf{Difficulty} : Medium
-        \item \textbf{Description} : The computation of the function must be performed within some desired time to provide better performance.
-
+        \item \textbf{Description} : The text-based user interface must be user-friendly and appropriate error messages should be displayed for the corresponding error by the system.
+        \end{itemize}
+    
+    \item{} Requirement 9
+        \begin{itemize}
+        \item \textbf{ID} : REQ9
+        \item \textbf{Version} : 1.0
+        \item \textbf{Type} : Non-Functional Requirement
+        \item \textbf{Priority} : High
+        \item \textbf{Difficulty} : Medium
+        \item \textbf{Description} : The system must be maintainable, i.e, it should be easy to modify the existing system or add any new features/functionality over time.
         \end{itemize}
     
 \end{enumerate}
@@ -191,6 +248,7 @@ In this algorithm, the iterative approach is used for calculation of the given f
 
 
 \begin{algorithm}[hbt!]
+\renewcommand{\thealgorithm}{2.1}
 \caption{recursive\_power(b,x)}\label{alg:two}
 
 \hspace*{\algorithmicindent} \textbf{Input : }double number $b,x$. \\
@@ -222,36 +280,36 @@ In this algorithm, the iterative approach is used for calculation of the given f
 \end{algorithmic}
 \end{algorithm}
 
-In this algorithm, the recursive approach using divide and conquer strategy is used for the calculation of the given function $ab^x$. $recursive\_power(b,x)$ algorithm is used for calculating the value of $b^x$, the recursive call to the function with value base $b$ and $x = x/2$ i.e $recursive\_power(b,x/2)$ is stored in helper, so that it needs to be computed just once and can be used later on. If the value of exponent $x$ is fractional, it is checked and $fraction\_power(b,x)$ will compute all the power values of such exponents. For negative value of exponent, value of base $b$is reciprocated and that of exponent $x$ is negated and on the basis of the parity the algorithm performs the computation. In the base case, if the value of $x$ is 0, value $1$ is returned, otherwise, if $x=1$, value $b$ is returned, if the exponent is divisible by $2$, the algorithm recurses on $(helper * helper)$ and for odd value of exponent, the value of exponent is decremented by $1$ and then it recurses on $(helper * helper * b)$,  At last, $a$ is multiplied with the returned value from $recursive\_power(b,x)$ and the output is obtained in the $result$, and it is returned.
+In this algorithm, the recursive approach using divide and conquer strategy is used for the calculation of the given function $ab^x$ \cite{Recursive Power Function}. $recursive\_power(b,x)$ algorithm is used for calculating the value of $b^x$, the recursive call to the function with value base $b$ and $x = x/2$ i.e $recursive\_power(b,x/2)$ is stored in helper, so that it needs to be computed just once and can be used later on. If the value of exponent $x$ is fractional, it is checked and $fraction\_power(b,x)$ will compute all the power values of such exponents. For negative value of exponent, value of base $b$ is reciprocated and that of exponent $x$ is negated and on the basis of the parity the algorithm performs the computation. In the base case, if the value of $x$ is 0, value $1$ is returned, otherwise, if $x=1$, value $b$ is returned, if the exponent is divisible by $2$, the algorithm recurses on $(helper * helper)$ and for odd value of exponent, the value of exponent is decremented by $1$ and then it recurses on $(helper * helper * b)$,  At last, $a$ is multiplied with the returned value from $recursive\_power(b,x)$ and the output is obtained in the $result$, and it is returned.
 
 \newpage
 \begin{algorithm}[hbt!]
+\renewcommand{\thealgorithm}{2.2}
 \caption{fractional\_power(b,x)}\label{alg:two}
 
 \hspace*{\algorithmicindent} \textbf{Input : }double number $b,x$. \\
 \hspace*{\algorithmicindent} \textbf{Output : }value of $b^x$ will be returned.
 \begin{algorithmic}[1]
+\STATE $e \gets 2.7182818284590$
 \STATE $exponentValue \gets 0$
-\STATE $iterations \gets 150$
+\STATE $iterations \gets 20$
 \STATE $logValue \gets logarithm\_calculator(b)$
+\STATE $eValueX \gets (x \hspace{1mm} * \hspace{1mm} logValue)$
+\STATE $eValueR \gets eValueX - (int)\hspace{1mm}eValueX$
 \WHILE{$iterations >= 0$}
-  \STATE $powerValue \gets recursive\_power((x * logValue) , iterations) $
+  \STATE $powerValue \gets recursive\_power(eValueR , iterations) $
   \STATE $factorialValue \gets factorial\_calculator(iterations)$ 
   \STATE $exponentValue \gets exponentValue + (powerValue / factorialValue)$
   \STATE $iterations \gets iterations - 1$
 \ENDWHILE
-
-\STATE $reciprocalExponentValue \gets 1/exponentValue $
-\IF{$x > $ 0}
-  \STATE return $exponentValue$
-\ELSE
- \STATE return $reciprocalExponentValue$
-\ENDIF
-
+\STATE $eValueN \gets recursive\_power(e, (int) \hspace{1mm} eValueX)$
+\STATE $eFinalValue \gets exponentValue \hspace{1mm}*\hspace{1mm} eValueN$
+\STATE return $eFinalValue$
 \end{algorithmic}
 \end{algorithm}
 \vspace*{-.4cm}
 \begin{algorithm}[hbt!]
+\renewcommand{\thealgorithm}{2.3}
 \caption{logarithm\_calculator(n)}\label{alg:two}
 
 \hspace*{\algorithmicindent} \textbf{Input : }double number $n$. \\
@@ -277,6 +335,7 @@ In this algorithm, the recursive approach using divide and conquer strategy is u
 \end{algorithm}
 
 \begin{algorithm}[hbt!]
+\renewcommand{\thealgorithm}{2.4}
 \caption{factorial\_calculator(n)}\label{alg:two}
 
 \hspace*{\algorithmicindent} \textbf{Input : }double number $n$. \\
@@ -294,7 +353,17 @@ In this algorithm, the recursive approach using divide and conquer strategy is u
 
 
 \newpage
-Algorithm $fractional\_power(b,x) $ helps in finding the power of any fractional exponent, the given exponent and base are converted as, $b^x = (e^{ln(b)})^x = e^{xln(b)} $, where the natural logarithm value for b is computed using the $logarithm\_calculator(n) $ algorithmFinally, the computation of $e^{xln(b)} $ is performed by calculating numerator(powerValue) by using $recursive\_power$ , passing $x * value of ln(x) $ as base and $iteration \hspace{1mm} number$ as exponent and the denominator is the factorial value of the iteration number obtained using the $factorial\_calulcator(n)$ algorithm, numerator and denominator are divided and their result is stored in the $exponentValue$ which is returned after completion of all the given number of iterations.
+\noindent
+Algorithm $fractional\_power(b,x) $ helps in finding the power of any fractional exponent, the given exponent and base are converted as, $b^x = (e^{ln(b)})^x = e^{xln(b)} $ \cite{Algorithms}, where the natural logarithm value for b is computed using the $logarithm\_calculator(n) $ algorithm. Finally, for the computation of $e^{xln(b)} $ , $(eValueX)$ it is splitted into $e^r$ $(eValueR)$ and $e^n$ $(eValueN)$,
+
+$e^{xln(b)} $ = $e^r * e^n $ 
+
+\noindent
+ where $e^r$ is computed in the while loop by calculating numerator(powerValue) by using $recursive\_power$ , passing $eValueR$ as base and $iteration \hspace{1mm} number$ as exponent and the denominator is the factorial value of the iteration number obtained using the $factorial\_calulcator(n)$ algorithm, numerator and denominator are divided and their result is stored in the $exponentValue$ which is returned after completion of all the given number of iterations. Similarly $e^n$ $(eValueN)$ is computed by using $recursive\_power$, passing the value of $e$ as base and $(int) eValueX$ as the exponent, at last both $exponentValue$ and $eValueN$ are multiplied and their product is returned as the final value.
+ 
+ 
+\noindent
+Algorithms 2.1, 2.2, 2.3 and 2.4 are defined to help in the computation of the main algorithm 2.
 
 \subsection{Advantages and Disadvantages}
 
@@ -312,18 +381,18 @@ Advantages:
 
 Disadvantages:
 \begin{enumerate}
-    \item {Some iterative algorithms are slower when compared to other approaches, Algorithm 1 which was described previously has time complexity of O(n) , so for larger inputs it is inefficient.}
+    \item {Some iterative algorithms are slower when compared to other approaches, Algorithm 1 which was described previously has time complexity of $O(n)$ , so for larger inputs it is inefficient.}
     \item {If the termination condition of control variable is not defined properly, it may lead to infinite loop.}
     
 \end{enumerate}
-
+\newpage
 \subsubsection{Algorithm 2}
 Recursive Approach 
 
 Advantages:
 \begin{enumerate}
     \item {Recursive Algorithms have less time complexity for certain problems;  Algorithm 2 which was described previously has time complexity of $O(logn)$ which is better than that of Algorithm 1.}
-    \item {Recursive Algorithms are very useful in situations where particular solution is to be applied repeatedly.}
+    \item {Recursive Algorithms are very useful in situations where particular solution is to be applied repeatedly \cite{Advantages and Disadvantages of Recursion}.}
     
 \end{enumerate}
 
@@ -336,12 +405,14 @@ Disadvantages:
 
 \subsection*{Decision}
 Algorithm 2 (recursive approach) would be a better option for the implementation of the function $ab^x$ as it has lower time complexity and the computation of the function must be performed quickly, so it is preferable to use the recursive algorithm rather than the iterative algorithm.
+
 \newpage
+
 
 \section{Problem 4 }
 \subsection{Debugger}
 \subsubsection{Description}
-Debugging provides the facility for identifying and eliminating bugs, errors present in the program. This process can help in tracing the reasons behind the improper functional behaviour of any program. For debugging, I have used the IntelliJ debugger tool for java language and depending on the various installed plugins, it provides support for debugging code in different languages as well. IntelliJ debugger allows the facility to run the program step by step and keep a track of the values of the associated variables.
+Debugging provides the facility for identifying and eliminating bugs, errors present in the program. This process can help in tracing the reasons behind the improper functional behaviour of any program. For debugging, I have used the IntelliJ debugger tool for java language and it provides support for debugging code in different languages as well by installation of various plugins. IntelliJ debugger allows the facility to run the program step by step and keep a track of the values of the associated variables \cite{IntelliJ Debugger}.
 
 \subsubsection{Advantages : }
 \begin{enumerate}
@@ -376,27 +447,12 @@ Debugging provides the facility for identifying and eliminating bugs, errors pre
 
 \newpage
 
-\newpage
-
-\subsection{Quality Attributes}
-This section highlights and describes several efforts made to achieve the desired quality attributes related to the java program .
-\begin{enumerate}
-    \item \textbf{Efficient} – The program uses recursive algorithm to compute the exponential value and it provides time complexity of $O(logn)$ and it is the same for space complexity due to recursive stack space. It is more efficient and better choice in comparison to other approaches. As a result, the program runs quickly, and the function value is computed within required time window.
-    \item \textbf{Maintainable} – The program is partitioned into various methods each responsible for certain kind of computation, I have divided the user interface, error handling part $(Main.java)$ from the core logic part $(Exponential.java)$ related to the calculation of exponential function value. It allows easy modification of features/functionalities as well as adding new ones. It makes the code maintainable.
-    \item \textbf{Correctness} – I have designed several test cases to check the program against all the possible values of the base and exponent including invalid inputs, fractional exponent, negative exponents, every test case successfully runs and hence the developed program provides correct results and agrees to the desired specifications.
-    \item \textbf{Robust} – Input values are validated as they are entered by the user and all the invalid inputs are rejected. On entering such inputs, the program displays corresponding error message and asks for new valid input values from the user. In this way error handling is performed to avoid any kind of failure. 
-    \item \textbf{Usable} – The program provides text-based user interface to the user for entering the values and displays the computed result. The error messages are meaningful and can be easily understood. It provides functionality for user to continue the computation for other values or exit the system. In this way, the program is made user-friendly.
-    \item \textbf{Portable} - The program is developed in java language, so it can be executed on other platforms as well as systems without requiring any modifications. 
-\end{enumerate}
-
-\newpage
-
 \subsection{Quality Attributes}
 This section highlights and describes several efforts made to achieve the desired quality attributes related to the java program \cite{Quality Assurance}.
 \begin{enumerate}
     \item \textbf{Efficient} – The program uses recursive algorithm to compute the exponential value and it provides time complexity of $O(logn)$ and it is the same for space complexity due to recursive stack space. It is more efficient and better choice in comparison to other approaches. As a result, the program runs quickly, and the function value is computed within required time window.
     \item \textbf{Maintainable} – The program is partitioned into various methods each responsible for certain kind of computation, I have divided the user interface, error handling part $(Main.java)$ from the core logic part $(Exponential.java)$ related to the calculation of exponential function value. It allows easy modification of features/functionalities as well as adding new ones. It makes the code maintainable.
-    \item \textbf{Correctness} – I have designed several test cases to check the program against all the possible values of the base and exponent including invalid inputs, fractional exponent, negative exponents, every test case successfully runs and hence the developed program provides correct results and agrees to the desired specifications.
+    \item \textbf{Correctness} – I have designed several test cases to check the program against all the possible values of the base and exponent including invalid inputs, fractional exponent, negative exponents, every test case runs successfully and hence the developed program provides correct results and agrees to the desired specifications.
     \item \textbf{Robust} – Input values are validated as they are entered by the user and all the invalid inputs are rejected. On entering such inputs, the program displays corresponding error message and asks for new valid input values from the user. In this way error handling is performed to avoid any kind of failure. 
     \item \textbf{Usable} – The program provides text-based user interface to the user for entering the values and displays the computed result. The error messages are meaningful and can be easily understood. It provides functionality for user to continue the computation for other values or exit the system. In this way, the program is made user-friendly.
     \item \textbf{Portable} - The program is developed in java language, so it can be executed on other platforms as well as systems without requiring any modifications. 
@@ -412,6 +468,7 @@ To check the pragmatic quality of the code, I have used the Checkstyle tool and 
     \item Checkstyle can also perform checking for various issues related to formatting and layout of the code.
     \item It allows creation and checking against various user-defined rules according to the project requirements.
     \item Checkstyle displays a panel with all the error/warnings messages related to the violation of the desired coding standards, it also points out the location and provides suggestion to solve it.
+    \item Checkstyle is designed as a standalone framework and it is easier to integrate it with other external tools.
 \end{enumerate}
 
 \subsubsection{Disadvantages : }
@@ -421,10 +478,11 @@ To check the pragmatic quality of the code, I have used the Checkstyle tool and 
     \item Checkstyle only checks the code against the coding standards but does not validate the correctness of the java code.
 \end{enumerate}
 
-\newpage
-
 \noindent
-The snapshots of error messages in the source code before using Checkstyle tool and after modifying the code according to desired coding standards are attached below. 
+Before using the Checkstyle tool there were around 45+ errors related to coding standards  and all of them were solved. The snapshots of error messages in the source code before using Checkstyle tool and after modifying the code according to desired coding standards are attached below. 
+
+
+\newpage
 
 \begin{figure}[h]
   \includegraphics[width=15cm,height=9cm]{CheckStyle(Before).png}
@@ -440,7 +498,6 @@ The snapshots of error messages in the source code before using Checkstyle tool 
 \end{figure}
 
 \newpage
-
 \section{Problem 5 : Unit Test Cases }
 In order to write unit tests for the function $ab^x$ , I have used \textbf{Junit 5} \cite{JUnit5} as the unit testing framework. I have designed various unit tests to test the successful functioning of the system as well as all the methods used in the program for certain computations, I have provided the tracing of the requirements with the designed unit tests along with the description as below.  
 \newline
@@ -499,4 +556,58 @@ In order to write unit tests for the function $ab^x$ , I have used \textbf{Junit
     \textbf{Description : } Test if the computation of the function is performed within the desired amount of time to meet the requirement.
     
 \newpage
+    
+\begin{thebibliography}{20}
+\bibitem{Exponential Growth and Decay}
+Exponential Growth and Decay,\\
+https://virtuallearningacademy.net/VLA/LessonDisplay/Lesson6156/MATHAL GIIBU17Exponential\_Decay.html. Accessed 31 July 2022.
+
+\bibitem{Injectivity and Surjectivity of Exponential Function}
+Injectivity and Surjectivity of Exponential Function,\\
+https://math.stackexchange.com/q/349902. Accessed 31 July 2022
+
+
+\bibitem{Exponential Function Graph}
+Exponential Function Graph,\\
+https://www.basic-mathematics.com/exponential-function.html. Accessed 31 July 2022.
+
+\bibitem{Requirements Engineering}
+"ISO/IEC/IEEE International Standard - Systems and software engineering -- Life cycle processes -- Requirements engineering," in ISO/IEC/IEEE 29148:2018(E) , vol., no., pp.1-30, 30 Nov. 2018, doi: 10.1109/IEEESTD.2018.8559686.
+
+\bibitem{Recursive Power Function}
+Power Function,\\
+https://afteracademy.com/blog/calculate-power-function. Accessed 31 July 2022.
+
+\bibitem{Algorithms}
+Algorithms,\\
+https://mathonweb.com/help\_ebook/html/algorithms.htm. Accessed 31 July 2022.
+
+\bibitem{Advantages and Disadvantages of Recursion}
+Advantages and Disadvantages of Recursion\\
+https://medium.com/@williambdale/recursion-the-pros-and-cons-76d32d75973a. Accessed 31 July 2022.
+ 
+\bibitem{IntelliJ Debugger}
+IntelliJ Debugger,\\
+https://www.jetbrains.com/help/idea/debugging-code.html. Accessed 31 July 2022.
+
+\bibitem{Quality Assurance}
+Quality Assurance, Software Quality Attributes,\\
+http://www.qasigma.com/2008/12/software-quality-attributes.html. Accessed 31 July 2022.
+
+
+\bibitem{Checkstyle}
+Checkstyle – Checkstyle 10.3.1,\\
+https://checkstyle.sourceforge.io/. Accessed 31 July 2022.
+
+\bibitem{JUnit5}
+Junit 5,\\
+https://junit.org/junit5/. Accessed 31 July 2022.
+
+\bibitem{Good Techincal Report}
+Hering, Heike. How to Write Technical Reports: Understandable Structure, Good Design, Convincing Presentation. Springer Berlin Heidelberg, 2019. DOI.org (Crossref), https://doi.org/10.1007/978-3-662-58107-0.
+
+\end{thebibliography}
+
+\newpage
+
 \end{document}
