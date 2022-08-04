@@ -7,7 +7,7 @@ public class Main {
 
     /**
      * This main method contains implementation of basic command line interface,
-     * for asking input from the userThe command line asks for the input values
+     * for asking input from the user. The command line asks for the input values
      * a, b(base) and x(exponent) from the user.
      *
      * @param args
@@ -21,7 +21,8 @@ public class Main {
         boolean improperInput = true;
         while (improperInput) {
             try {
-                System.out.println("*** Exponential Function ***");
+                System.out.println("************************"
+                        + " Exponential Function ************************");
                 System.out.print("Enter the value of a: \n");
                 a = sc.nextDouble();
                 System.out.println("Enter the value of b: ");
@@ -33,7 +34,9 @@ public class Main {
                     continue;
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Entered input is not a numeric value. Do you want to continue?");
+                System.out.println("Entered input is not a numeric value. "
+                        + "Please enter values from the domain of the function."
+                       + "\nDo you want to continue?");
             } catch (Exception e) {
                 System.out.println("Some Exception occurred.");
             }
@@ -42,7 +45,7 @@ public class Main {
                     + "any other key to continue : \n");
             exitCharacter = sc.next().charAt(0);
             if (exitCharacter == 'e' || exitCharacter == 'E') {
-                System.out.println("Thank you!!");
+                System.out.println("Thank you! Bye..");
                 improperInput = false;
             }
 
@@ -65,7 +68,8 @@ public class Main {
         } else {
             improperInput = true;
             System.out.println("Please enter valid inputs for"
-                    + " a and b, inputs must be, a not equal to 0 and b > 0 ");
+                    + " a and b, \nFor a, input value must not be equal to 0 "
+                    + "and For b, it must be greater than 0 (b > 0) ");
         }
         if (!improperInput) {
             double exponentialRes;

@@ -59,9 +59,7 @@ public final class Exponential {
         }
         double logValue = 0;
         double baseValue = (number - 1) / (number + 1);
-
         while (numberOfIterations > 0) {
-
             if (numberOfIterations % 2 != 0) {
                 logValue += computeExponential(baseValue, numberOfIterations)
                         / numberOfIterations;
